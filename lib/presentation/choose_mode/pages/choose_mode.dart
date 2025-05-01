@@ -7,6 +7,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:spotifyclone/common/widgets/button/basic_app_button.dart';
 import 'package:spotifyclone/core/configs/assets/app_images.dart';
 import 'package:spotifyclone/core/configs/assets/app_vectors.dart';
+import 'package:spotifyclone/presentation/auth/pages/signup_or_signin.dart';
 import 'package:spotifyclone/presentation/choose_mode/bloc/theme_cubit.dart';
 
 class ChooseModePage extends StatelessWidget {
@@ -57,33 +58,24 @@ class ChooseModePage extends StatelessWidget {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            context
-                                .read<ThemeCubit>()
-                                .updateTheme(ThemeMode.light);
+                            context.read<ThemeCubit>().updateTheme(ThemeMode.dark);
                           },
-                          child: GestureDetector(
-                            onTap: () {
-                              context
-                                  .read<ThemeCubit>()
-                                  .updateTheme(ThemeMode.dark);
-                            },
-                            child: ClipOval(
-                              child: BackdropFilter(
-                                filter: ImageFilter.blur(
-                                  sigmaX: 10,
-                                  sigmaY: 10,
+                          child: ClipOval(
+                            child: BackdropFilter(
+                              filter: ImageFilter.blur(
+                                sigmaX: 10,
+                                sigmaY: 10,
+                              ),
+                              child: Container(
+                                width: 80,
+                                height: 80,
+                                decoration: BoxDecoration(
+                                  color: Color(0xff30393C).withOpacity(0.5),
+                                  shape: BoxShape.circle,
                                 ),
-                                child: Container(
-                                  width: 80,
-                                  height: 80,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xff30393C).withOpacity(0.5),
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: SvgPicture.asset(
-                                    AppVectors.moonIcon,
-                                    fit: BoxFit.none,
-                                  ),
+                                child: SvgPicture.asset(
+                                  AppVectors.moonIcon,
+                                  fit: BoxFit.none,
                                 ),
                               ),
                             ),
@@ -107,22 +99,27 @@ class ChooseModePage extends StatelessWidget {
                     ),
                     Column(
                       children: [
-                        ClipOval(
-                          child: BackdropFilter(
-                            filter: ImageFilter.blur(
-                              sigmaX: 10,
-                              sigmaY: 10,
-                            ),
-                            child: Container(
-                              width: 80,
-                              height: 80,
-                              decoration: BoxDecoration(
-                                color: Color(0xff30393C).withOpacity(0.5),
-                                shape: BoxShape.circle,
+                        GestureDetector(
+                          onTap: () {
+                            context.read<ThemeCubit>().updateTheme(ThemeMode.light);
+                          },
+                          child: ClipOval(
+                            child: BackdropFilter(
+                              filter: ImageFilter.blur(
+                                sigmaX: 10,
+                                sigmaY: 10,
                               ),
-                              child: SvgPicture.asset(
-                                AppVectors.sunIcon,
-                                fit: BoxFit.none,
+                              child: Container(
+                                width: 80,
+                                height: 80,
+                                decoration: BoxDecoration(
+                                  color: Color(0xff30393C).withOpacity(0.5),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: SvgPicture.asset(
+                                  AppVectors.sunIcon,
+                                  fit: BoxFit.none,
+                                ),
                               ),
                             ),
                           ),
@@ -142,7 +139,7 @@ class ChooseModePage extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 BasicAppButton(
@@ -151,7 +148,7 @@ class ChooseModePage extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (BuildContext context) =>
-                              const ChooseModePage()),
+                              const SignupOrSignInPage()),
                     );
                   },
                   title: 'Continue',

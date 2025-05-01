@@ -17,13 +17,14 @@ class BasicAppButton extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         minimumSize: Size.fromHeight(height ?? 50),
+        elevation: 0
       ), 
       child: Text(
         title,
         style: const TextStyle(
           fontWeight: FontWeight.w600,
           color: Colors.white,
-          fontSize: 18,
+          fontSize: 16,
         ),
       )
     );
