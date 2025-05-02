@@ -38,7 +38,12 @@ class ChooseModePage extends StatelessWidget {
               children: [
                 Align(
                     alignment: Alignment.topCenter,
-                    child: SvgPicture.asset(AppVectors.logo)),
+                    child: SvgPicture.asset(
+                      AppVectors.logo,
+                      height: 30,
+                      width: 30,
+                    )
+                ),
                 const Spacer(),
                 const Text(
                   'Choose Mode',
